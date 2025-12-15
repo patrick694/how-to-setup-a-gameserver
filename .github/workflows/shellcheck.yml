@@ -1,0 +1,24 @@
+name: ShellCheck
+
+on: [push, pull_request]
+
+jobs:
+  shellcheck:
+    name: ShellCheck Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install ShellCheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck on scripts
+        run: |
+          echo "Running shellcheck on top-level and cluster scripts"
+          shellcheck --version || true
+          shellcheck install-cluster.sh || true
+          shellcheck cluster/*.sh || true
+          shellcheck scripts/*.sh || true

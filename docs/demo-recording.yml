@@ -1,0 +1,13 @@
+# Demo recording config
+command: bash -l
+cwd: /root/gameserver-proxmox-cluster
+env:
+  recording: true
+cols: 120
+rows: 30
+frameDelay: auto
+maxIdleTime: 2000
+theme:
+  background: "#1e1e1e"
+  foreground: "#ffffff"
+  cursor: "#4ecdc4"
